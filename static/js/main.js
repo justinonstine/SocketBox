@@ -6,7 +6,7 @@ var searchArray = searchWords.split(" ");
 createSearchBubbles = function(){
 	var i = 0;
 	while (i < searchArray.length){
-		var HTMLtoolDescr = '<button type="button" class="btn btn-info btn-xs" id= "tag#"><span class="glyphicon glyphicon-remove"></span> %searchWord%</button>';
+		var HTMLtoolDescr = '<button type="button" class="btn btn-info btn-xs btn-search-term" id= "tag#"><span class="glyphicon glyphicon-remove"></span> %searchWord%</button>';
 		var intermtoolDescr = HTMLtoolDescr.replace("#", i);
 		var formattedtoolDescr = intermtoolDescr.replace("%searchWord%", searchArray[i]);
 		$(".searchTerms").append(formattedtoolDescr);
@@ -16,7 +16,7 @@ createSearchBubbles = function(){
 
 
 $(document).ready(function() {
-	$(".btn-info").on("click", function() {
+	$(".btn-search-term").on("click", function() {
 		console.log($(this));
 		$(this).hide();
 	});
