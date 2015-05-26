@@ -1,149 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="../../static/css/style.css">
-        <link rel="shortcut icon" href="../../static/images/favicon.ico" />
-    	<title>socketBox</title>
-    </head>
-		<div class="container">
+{% extends 'socketbox/base.html' %}
 
-            <div class="header">
-                <ul class="nav nav-pills">
-                    <li><a href="#"><img border="0" alt="logo" src="../../static/images/logo.png" width="30" height="30"></a></li>
-                    <li class="dropdown pull-right">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Profile <b class="caret"></b></a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#">Edit Profile</a></li>
-                            <li><a href="#">LogOut</a></li>
-                        </ul>
-                    </li>
-                    <li class= "pull-right"><a href="#">Toolbox</a></li>
-                    <li class="dropdown pull-right">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Inbox <span class="badge">2</span><b class="caret"></b></a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#">Inbox</a></li>
-                            <li><a href="#">Drafts</a></li>
-                            <li><a href="#">Sent Items</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Trash</a></li>
-                        </ul>
-                    </li>
+{% block title %} socketBox {% endblock %}
+
+{% block body_block %}
+    <div class= "row">
+        <div class= "col-xs-12 hero-unit">
+            <form class="navbar-form" role="search" action= "whatPageToSendToJUSTIN.php">
+              <div class="form-group">
+                <input type="text" name= "searchQueryJUSTIN" class="form-control" placeholder="ex. saw">
+              </div>
+              <button type="submit" name= "searchQuerySubmitJUSTIN" class="btn btn-default">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <div class= "row">
+        <div class= "searchTerms">
+        </div>
+    </div>
+
+    <div class= "row searchPullDowns">
+        <ul class= "list-inline">
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> tool type <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">power tools</a></li>
+                    <li><a href="#">hand tools</a></li>
                 </ul>
-            </div>
-
-
-            <div class= "row">
-                <div class= "col-xs-12 hero-unit">
-                    <form class="navbar-form" role="search" action= "whatPageToSendToJUSTIN.php">
-                      <div class="form-group">
-                        <input type="text" name= "searchQueryJUSTIN" class="form-control" placeholder="ex. saw">
-                      </div>
-                      <button type="submit" name= "searchQuerySubmitJUSTIN" class="btn btn-default">Search</button>
-                    </form>
-                </div>
-            </div>
-
-
-            <div class= "row">
-                <div class= "searchTerms">
-                </div>
-            </div>
-
-
-            <div class= "row searchPullDowns">
-                <ul class= "list-inline">
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> tool type <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">power tools</a></li>
-                            <li><a href="#">hand tools</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> power tools <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">fastening</a></li>
-                            <li><a href="#">saws and cutters</a></li>
-                            <li><a href="#">drills and impact</a></li>
-                            <li><a href="#">grinders</a></li>
-                            <li><a href="#">heat guns</a></li>
-                            <li><a href="#">knockout tools</a></li>
-                            <li><a href="#">shears</a></li>
-                            <li><a href="#">routers</a></li>
-                            <li><a href="#">sanders and polishers</a></li>
-                            <li><a href="#">sprayers</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> hand tools <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">fastening</a></li>
-                            <li><a href="#">layout</a></li>
-                            <li><a href="#">pliers</a></li>
-                            <li><a href="#">saws and cutters</a></li>
-                            <li><a href="#">screwdrivers and nutdrivers</a></li>
-                            <li><a href="#">hammers</a></li>
-                            <li><a href="#">drills</a></li>
-                            <li><a href="#">files</a></li>
-                            <li><a href="#">sanders and polishers</a></li>
-                            <li><a href="#">sprayers</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> cords <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">corded</a></li>
-                            <li><a href="#">cordless</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> brand <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">deWalt</a></li>
-                            <li><a href="#">Makita</a></li>
-                            <li><a href="#">Milwaukee</a></li>
-                            <li><a href="#">Black and Decker</a></li>
-                            <li><a href="#">Craftsman</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> project type <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">wood</a></li>
-                            <li><a href="#">metal</a></li>
-                            <li><a href="#">electrical</a></li>
-                            <li><a href="#">automotive</a></li>
-                            <li><a href="#">yard</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle"> accessories <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">bits</a></li>
-                            <li><a href="#">clamps</a></li>
-                            <li><a href="#">blades</a></li>
-                            <li><a href="#">supports and sawhorses</a></li>
-                        </ul>
-                    </li>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> power tools <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">fastening</a></li>
+                    <li><a href="#">saws and cutters</a></li>
+                    <li><a href="#">drills and impact</a></li>
+                    <li><a href="#">grinders</a></li>
+                    <li><a href="#">heat guns</a></li>
+                    <li><a href="#">knockout tools</a></li>
+                    <li><a href="#">shears</a></li>
+                    <li><a href="#">routers</a></li>
+                    <li><a href="#">sanders and polishers</a></li>
+                    <li><a href="#">sprayers</a></li>
                 </ul>
-            </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> hand tools <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">fastening</a></li>
+                    <li><a href="#">layout</a></li>
+                    <li><a href="#">pliers</a></li>
+                    <li><a href="#">saws and cutters</a></li>
+                    <li><a href="#">screwdrivers and nutdrivers</a></li>
+                    <li><a href="#">hammers</a></li>
+                    <li><a href="#">drills</a></li>
+                    <li><a href="#">files</a></li>
+                    <li><a href="#">sanders and polishers</a></li>
+                    <li><a href="#">sprayers</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> cords <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">corded</a></li>
+                    <li><a href="#">cordless</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> brand <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">deWalt</a></li>
+                    <li><a href="#">Makita</a></li>
+                    <li><a href="#">Milwaukee</a></li>
+                    <li><a href="#">Black and Decker</a></li>
+                    <li><a href="#">Craftsman</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> project type <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">wood</a></li>
+                    <li><a href="#">metal</a></li>
+                    <li><a href="#">electrical</a></li>
+                    <li><a href="#">automotive</a></li>
+                    <li><a href="#">yard</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle"> accessories <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">bits</a></li>
+                    <li><a href="#">clamps</a></li>
+                    <li><a href="#">blades</a></li>
+                    <li><a href="#">supports and sawhorses</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-            <div class= "row">
-                <div class="list-group">
-                    <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
-                    <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
-                    <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
-                    <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
-                </div>
-            </div>
-		</div>
-        <script src= "../../static/js/main.js"></script>
-	</body>
-</html>
+    <div class= "row">
+        <div class="list-group">
+            <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
+            <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
+            <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
+            <a href="#" class="list-group-item"><img alt="logo" src="../../static/images/logo.png" width="30" height="30" class= "pull-left">%toolName%,%ownerName%</a>
+        </div>
+    </div>
+{% endblock %}
