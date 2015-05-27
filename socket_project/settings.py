@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'socket',
         'USER': "justinonstine",
         'PASSWORD': "kermit",
-        'HOST': 'localhost',
+        'HOST': '192.168.1.137',
         'PORT': '5432',
     }
 }
