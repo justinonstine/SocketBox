@@ -22,6 +22,7 @@
                 <li><a href="{% url 'index' %}"><img border="0" alt="logo" src="../../static/images/logo.png" width="30" height="30"></a></li>
                 {% if user.is_authenticated %}
                     <li class="pull-right">Hello {{ user.username }}</li>
+                    <li class="pull-right"><a href="{% url 'search' %}">Search</a></li>
                     <li class="dropdown pull-right">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Profile <b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">

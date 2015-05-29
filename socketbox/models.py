@@ -44,7 +44,7 @@ class UserProfile(models.Model):
     address = models.ForeignKey(Location, related_name="home_address")
     phoneNumber = models.CharField(max_length=20)
     user = models.OneToOneField(User)
-    communities = models.ManyToManyField(Community, null=True)
+    communities = models.ManyToManyField(Community)
     locations = models.ManyToManyField(Location)
 
 
@@ -68,13 +68,13 @@ class Tool(models.Model):
     currentLocation = models.ForeignKey(Location, related_name="current_location")
     owners = models.ManyToManyField(UserProfile)
     caretaker = models.ForeignKey(UserProfile, related_name="caretaker")
-    category = models.ManyToManyField(Category, null=True)
+    category = models.ManyToManyField(Category)
     lastLoaned = models.DateField(null=True)
     dueDate = models.DateField(null=True)
     set = models.ForeignKey(Set, null=True)
 
     #  A drill is not a bit's accessory, so symmetrical is false
-    accessory = models.ManyToManyField("self", symmetrical=False, null=True)
+    accessory = models.ManyToManyField("self", symmetrical=False)
 
 
 
