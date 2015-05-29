@@ -41,11 +41,10 @@ class UserProfile(models.Model):
     This just stores a little extra information about a user than what the
     standard Django user model provides
     """
-    name = models.CharField(max_length=60)
     address = models.ForeignKey(Location, related_name="home_address")
     phoneNumber = models.CharField(max_length=20)
     user = models.OneToOneField(User)
-    communities = models.ManyToManyField(Community)
+    communities = models.ManyToManyField(Community, null=True)
     locations = models.ManyToManyField(Location)
 
 
@@ -60,22 +59,22 @@ class Tool(models.Model):
         (IMPERIAL, 'Imperial')
     )
     name = models.CharField(max_length=128)
-    size = models.CharField(max_length=30)
+    size = models.CharField(max_length=30, blank=True)
     unitType = models.CharField(max_length=2,
                                 choices=UNIT_CHOICES,
-                                default=IMPERIAL)
-    description = models.CharField(max_length=500)
+                                default=IMPERIAL, blank=True)
+    description = models.CharField(max_length=500, blank=True)
     permanentLocation = models.ForeignKey(Location, related_name="permanent_location")
     currentLocation = models.ForeignKey(Location, related_name="current_location")
     owners = models.ManyToManyField(UserProfile)
     caretaker = models.ForeignKey(UserProfile, related_name="caretaker")
-    category = models.ManyToManyField(Category)
-    lastLoaned = models.DateField()
-    dueDate = models.DateField()
-    set = models.ForeignKey(Set)
+    category = models.ManyToManyField(Category, null=True)
+    lastLoaned = models.DateField(null=True)
+    dueDate = models.DateField(null=True)
+    set = models.ForeignKey(Set, null=True)
 
     #  A drill is not a bit's accessory, so symmetrical is false
-    accessory = models.ManyToManyField("self", symmetrical=False)
+    accessory = models.ManyToManyField("self", symmetrical=False, null=True)
 
 
 
